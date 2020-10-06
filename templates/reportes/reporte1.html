@@ -1,0 +1,72 @@
+{% extends "base.html"%}
+{% load static %}
+
+{%block content%}
+<center>
+<br>
+<b><h1>Maestros!!</h1></b>
+<img src="https://content.thriveglobal.com/wp-content/uploads/2019/10/7-Reasons-To-Become-A-Teacher-.jpg" 
+class="img-thumbnail" alt="Teacher" style="width:300px">
+<br>
+</center>
+
+
+  <div class="table table-striped w-auto">
+    <br>
+      <table id="demo" border="5" class="dataframe" table-striped table-bordered table-hover >
+        <thead class="thead-dark">
+          
+          <tr>
+              <th>Maestro</th>
+              <th>Dia 1</th>
+              <th>Inicio</th>
+              
+              <th>Dia 2 </th>
+              <th>Inicio</th>
+              
+              <th>Materia</th>
+              
+              <th>Periodo</th>
+          </tr>
+          
+          <tbody>
+              {% for item in lista%}
+              <tr>
+                  {% for i in item%}
+                  <td width="50">
+                      {{ i }}
+                  </td>
+                  {%endfor%}
+              </tr>
+              {%endfor%} 
+          </tbody>
+          
+      </thead>
+      </table>
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="{%static 'tablefilter/tablefilter.js'%}" ></script>
+
+<script data-config="">
+  var filtersConfig = {
+   base_path: 'tablefilter/',
+   col_widths: ['230px', '230px', '230px', '230px', '230px', '230px', '230px'],
+   auto_filter: {
+                     delay: 110 //milliseconds
+               },
+               filters_row_index: 1,
+               state: false,
+               alternate_rows: true,
+               rows_counter: true,
+               btn_reset: true,
+               status_bar: true,
+               msg_filter: 'Filtrando...',
+               fixed_headers	:false,
+             };
+             var tf = new TableFilter('demo', filtersConfig);
+             tf.init();
+</script>     
+
+{%endblock%}
